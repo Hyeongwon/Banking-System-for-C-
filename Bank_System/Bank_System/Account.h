@@ -24,9 +24,11 @@ public:
 	~Account();
 };
 
+
+
 void ShowMenu(void);
 void MakeAccount(void);
-void DeposiMoney(void);
+void DepositMoney(void);
 void WithdrawMoney(void);
 void ShowAllAccInfo(void);
 

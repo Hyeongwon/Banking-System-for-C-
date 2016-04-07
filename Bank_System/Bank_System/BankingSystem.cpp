@@ -9,7 +9,6 @@
 #include "Account.h"
 
 using namespace std;
-
 enum {MAKE = 1, DEPOSIT, WITHDRAW, INQUIRE, EXIT};
 
 int main(void) {
@@ -28,6 +27,24 @@ int main(void) {
 		case MAKE:
 			MakeAccount();
 			break;
+
+		case DEPOSIT:
+			DepositMoney();
+			break;
+
+		case WITHDRAW:
+			WithdrawMoney();
+			break;
+
+		case INQUIRE:
+			ShowAllAccInfo();
+			break;
+
+		case EXIT:
+			return 0;
+
+		default:
+			cout << "Illegal selection.." << "\n";
 		}
 	}
 

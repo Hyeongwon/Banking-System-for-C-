@@ -3,10 +3,9 @@
 #include "Account.h"
 using namespace std;
 
-const int NAME_LEN = 20;
-
 Account *accArr[100];
 int accNum = 0;
+const int NAME_LEN = 20;
 
 Account::Account(int ID, int money, char *name)
 		:accID(ID), balance(money) {
@@ -69,5 +68,57 @@ void MakeAccount (void) {
 	cout << "\n";
 
 	accArr[accNum++] = new Account(id, balance, name);
+}
+
+void DepositMoney(void) {
+
+	int money;
+	int id;
+	
+	cout << "[Deposit]"<< "\n";
+	cout << "Account ID : "; cin >> id;
+	cout << "Deposit Money :"; cin >> money;
+
+	for(int i = 0; i < accNum; i++) {
+
+		if(accArr[i]-> GetAccID() == id) {
+			accArr[i]-> Deposit(money);
+			cout << "Complete Deposit" <<"\n\n";
+			return;
+		}
+
+	}
+	cout << "NotValid ID" << "\n";
+}
+
+void WithdrawMoney(void) {
+
+	int money;
+	int id;
+	cout << "[WithDraw]\n";
+	cout << "Account ID : "; cin >> id;
+	cout << "WithDraw money :"; cin >> money;
+
+	for(int i = 0; i < accNum; i++) {
+
+		if(accArr[i]->GetAccID() == id) {
+
+			if(accArr[i]->WithDraw(money) == 0) {
+				cout << "Insufficient funds\n\n";
+				return;
+			}
+		}
+		cout << "Complete Withdraw\n\n";
+		return;
+	}
+	cout << "NotValid ID" << "\n";
+}
+
+void ShowAllAccInfo(void) {
+
+	for(int i = 0; i < accNum; i++) {
+		accArr[i]->ShowAccInfo();
+		cout << endl;
+	}
 }
 
